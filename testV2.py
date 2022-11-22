@@ -3,7 +3,7 @@
 
 ## Hình ảnh hóa cho hồi quy tuyến tính bội
 #pandas được sư dụng để xử lí dữ liệu 
-import pandas
+import pandas as pd
 from sklearn import linear_model
 # numpy để thực hiện các xử lí toán học trong mảng 
 import numpy as np
