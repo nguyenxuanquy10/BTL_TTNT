@@ -1,4 +1,4 @@
-SalePrice,YearBuilt,YrSold,MonthSold,Size_sqf,Floor,N_Parkinglot_Ground,N_elevators,N_FacilitiesNearBy_PublicOffice,N_FacilitiesNearBy_Hospita),N_FacilitiesNearBy_Dpartmentstore,N_FacilitiesNearBy_Mall,N_FacilitiesNearBy_Park,N_SchoolNearBy_University,N_FacilitiesNearBy(Total),N_SchoolNearBy(Total)
+SalePrice,YearBuilt,YrSold,MonthSold,Size_sqf,Floor,N_Parkinglot_Ground,N_elevators,N_FacilitiesNearBy_PublicOffice,N_FacilitiesNearBy_Hospital,N_FacilitiesNearBy_Dpartmentstore,N_FacilitiesNearBy_Mall,N_FacilitiesNearBy_Park,N_SchoolNearBy_University,N_FacilitiesNearBy(Total),N_SchoolNearBy(Total)
 141592,2006,2007,8,814,3,111,0,2,1,1,1,0,2,6,9
 51327,1985,2007,8,587,8,80,2,5,1,2,1,1,0,12,4
 48672,1985,2007,8,587,6,80,2,5,1,2,1,1,0,12,4
