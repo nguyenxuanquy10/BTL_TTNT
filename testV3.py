@@ -23,19 +23,19 @@ Y = df['SalePrice']
 
 
 # Tạo model 
-model = smf.ols(formula='SalePrice ~ Size_sqf + Floor + N_Parkinglot_Ground + N_elevators + N_FacilitiesNearBy_PublicOffice + N_FacilitiesNearBy_Hospital + N_FacilitiesNearBy_Dpartmentstore + N_FacilitiesNearBy_Mall + N_FacilitiesNearBy_Park + N_SchoolNearBy_University', data=df)
+# model = smf.ols(formula='SalePrice ~ Size_sqf + Floor + N_Parkinglot_Ground + N_elevators + N_FacilitiesNearBy_PublicOffice + N_FacilitiesNearBy_Hospital + N_FacilitiesNearBy_Dpartmentstore + N_FacilitiesNearBy_Mall + N_FacilitiesNearBy_Park + N_SchoolNearBy_University', data=df)
+# model = smf.ols(formula='SalePrice ~ Size_sqf + Floor + N_Parkinglot_Ground + N_elevators + N_FacilitiesNearByTotal + N_SchoolNearByTotal', data=df)
+model = smf.ols(formula='SalePrice ~ Size_sqf + Floor + N_Parkinglot_Ground + N_elevators + N_FacilitiesNearByTotal ', data=df)
 results_formula = model.fit()
 results_formula.params
 
 variableDependent = np.array([results_formula.params[1],results_formula.params[2],
                               results_formula.params[3],results_formula.params[4],
-                              results_formula.params[5],results_formula.params[6],
-                              results_formula.params[7],results_formula.params[8],
-                              results_formula.params[9],results_formula.params[10]])
-# variableIndependent = np.array([587,8,80,2,5,1,2,1,1,0])
-variableIndependent = np.array([814,3,111,0,2,1,1,1,0,2])
+                              results_formula.params[5]])
+variableIndependent = np.array([587,8,80,2,12])
+# variableIndependent = np.array([814,3,111,0,6])
 # variableIndependent = np.array([814,3,111,0,2,1,1,1,0,2])
-print(np.sum(variableDependent*variableIndependent))
+print(np.sum(variableDependent*variableIndependent)+results_formula.params[0] )
 print(results_formula.params)
 
 ## Chuẩn bị dữ liệu để trực quan hóa 
