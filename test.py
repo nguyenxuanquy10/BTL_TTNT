@@ -37,12 +37,15 @@ variableDependent = np.array([results_formula.params[1],results_formula.params[2
                               results_formula.params[7],results_formula.params[8],
                               results_formula.params[9],results_formula.params[10]
                               ,results_formula.params[11]])
-variableIndependent = np.array([8960,4,4,4,3,1,0,0,0,0,1,0])
-
+variableIndependent = np.array([7680,4,2,4,1,1,1,0,0,1,0])
+#7680,4,2,4,1,1,1,0,0,1,0
+	# 6600	3	2	3	0	1	0	0	0	1	1
+# 16200	5	3	2	yes	no	no	no	no	0	no	unfurnished	1	0	0	0	0
+	# 4	2	3	yes	no	no	no	yes	2	yes	furnished	1	0	0	0	1	1
 # variableIndependent = np.array([814,3,111,0,6])
 # variableIndependent = np.array([814,3,111,0,2,1,1,1,0,2])
-print(np.sum(variableDependent*variableIndependent))
-
+print(np.sum(variableDependent*variableIndependent)+ results_formula.params[0])
+# 8100	4	1	2	yes	yes	yes	no	yes	2	yes	furnished	1	1	1	0	1	1
 print(results_formula.params)
 
 ## Chuẩn bị dữ liệu để trực quan hóa 
