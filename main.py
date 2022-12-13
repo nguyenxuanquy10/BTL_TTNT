@@ -16,7 +16,7 @@ df = pandas.read_csv("/content/BTL_TTNT/Daegu_Real_Estate_data - Copy.csv")
 
 ## chuẩn bị data set 
 
-# Lấy tất cả trường dữ liệu kích thước và vị trí tầng 
+# Lấy tất cả trường dữ liệu 
 X = df[['SalePrice','YearBuilt','YrSold','Size_sqf', 'Floor','N_Parkinglot_Ground','N_elevators','N_FacilitiesNearBy_PublicOffice','N_FacilitiesNearBy_Hospital','N_FacilitiesNearBy_Dpartmentstore','N_FacilitiesNearBy_Mall','N_FacilitiesNearBy_Park','N_SchoolNearBy_University']]
 
 Y = df['SalePrice']
@@ -37,33 +37,49 @@ variableDependent = np.array([results_formula.params[1],results_formula.params[2
                               results_formula.params[7], results_formula.params[8],
                               results_formula.params[9], results_formula.params[10],
                               results_formula.params[11]])
-
-variableIndependent = np.array([1377,4,713,27,5,1,1,0,1,1,21])
-
-print(np.sum(variableDependent*variableIndependent))
+## in hằng số đại diện cho độ dốc hồi quy 
 print(results_formula.params)
 
-# Chuẩn bị dữ liệu để trực quan hóa 
-dfVisualLize=df[['Size_sqf', 'Floor','NumberSold']]
-x_surf, y_surf = np.meshgrid(np.linspace(dfVisualLize.Size_sqf.min(), dfVisualLize.Size_sqf.max(), 2100),np.linspace(dfVisualLize.NumberSold.min(), dfVisualLize.NumberSold.max(), 30))
-onlyX = pandas.DataFrame({'Size_sqf': x_surf.ravel(), 'NumberSold': y_surf.ravel()})
+## giá gốc 
+realPrice =168141;
 
-fittedY=results_formula.predict(exog=onlyX)
+## nhập đầu vào 
+variableIndependent = np.array([1377,4,713,27,5,1,1,0,1,1,21])
+## giá nhà dự đoán 
+predictPrice=np.sum(variableDependent*variableIndependent)
+## in kết quả 
+print("Giá nhà dự đoán: ",predictPrice)
+print("Giá thật : ",realPrice )
+## độ chính xác so với giá nhà thật 
+percentPredict=(predictPrice/realPrice)*100; 
 
-## Chuyển kết quả dự đoán thành 1 mảng 
-
-fittedY=np.array(fittedY)
+print("Tỷ lệ chính xác : ", percentPredict);
 
 
-# Trực quan hóa dữ liệu cho hồi quy tuyến tính bội 
 
-fig = plt.figure()
-ax = fig.add_subplot(111, projection='3d')
-ax.scatter(dfVisualLize['Size_sqf'],dfVisualLize['NumberSold'],dfVisualLize['SalePrice'],c='red', marker='o', alpha=0.5)
-ax.plot_surface(x_surf,y_surf,fittedY.reshape(x_surf.shape), color='b', alpha=0.3)
-ax.set_xlabel('Size_sqf')
-ax.set_ylabel('NumberSold')
-ax.set_zlabel('SalePrice')
-plt.show()
+
+
+# # Chuẩn bị dữ liệu để trực quan hóa 
+# dfVisualLize=df[['Size_sqf', 'Floor','NumberSold']]
+# x_surf, y_surf = np.meshgrid(np.linspace(dfVisualLize.Size_sqf.min(), dfVisualLize.Size_sqf.max(), 2100),np.linspace(dfVisualLize.NumberSold.min(), dfVisualLize.NumberSold.max(), 30))
+# onlyX = pandas.DataFrame({'Size_sqf': x_surf.ravel(), 'NumberSold': y_surf.ravel()})
+
+# fittedY=results_formula.predict(exog=onlyX)
+
+# ## Chuyển kết quả dự đoán thành 1 mảng 
+
+# fittedY=np.array(fittedY)
+
+
+# # Trực quan hóa dữ liệu cho hồi quy tuyến tính bội 
+
+# fig = plt.figure()
+# ax = fig.add_subplot(111, projection='3d')
+# ax.scatter(dfVisualLize['Size_sqf'],dfVisualLize['NumberSold'],dfVisualLize['SalePrice'],c='red', marker='o', alpha=0.5)
+# ax.plot_surface(x_surf,y_surf,fittedY.reshape(x_surf.shape), color='b', alpha=0.3)
+# ax.set_xlabel('Size_sqf')
+# ax.set_ylabel('NumberSold')
+# ax.set_zlabel('SalePrice')
+# plt.show()
 
 
