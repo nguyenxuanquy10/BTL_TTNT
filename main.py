@@ -38,13 +38,16 @@ variableDependent = np.array([results_formula.params[1],results_formula.params[2
                               results_formula.params[9], results_formula.params[10],
                               results_formula.params[11]])
 ## in hằng số đại diện cho độ dốc hồi quy 
-print(results_formula.params)
+# print(results_formula.params)
 
 ## giá gốc 
-realPrice =168141;
+realPrice =51327;
 
 ## nhập đầu vào 
-variableIndependent = np.array([1377,4,713,27,5,1,1,0,1,1,21])
+variableIndependentPre = np.array([1985,2007,587,8,80,2,5,1,2,1,1,0])
+# Dữ liệu sau khi xử lí 
+numberSold=variableIndependentPre[1]-variableIndependentPre[0];
+variableIndependent=np.array([587,8,80,2,5,1,2,1,1,0,numberSold])
 ## giá nhà dự đoán 
 predictPrice=np.sum(variableDependent*variableIndependent)
 ## in kết quả 
@@ -52,6 +55,8 @@ print("Giá nhà dự đoán: ",predictPrice)
 print("Giá thật : ",realPrice )
 ## độ chính xác so với giá nhà thật 
 percentPredict=(predictPrice/realPrice)*100; 
+if(percentPredict>100):
+    percentPredict=200-percentPredict
 
 print("Tỷ lệ chính xác : ", percentPredict);
 
